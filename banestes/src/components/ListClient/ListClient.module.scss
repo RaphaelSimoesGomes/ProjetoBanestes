@@ -1,0 +1,20 @@
+.content ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .content .collaborator {
+    margin-bottom: 20px;
+    text-align: center; /* Centraliza o texto */
+  }
+  .modalContainer {
+    background-color: white;
+    color: black;
+    padding: 20px;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 600px;
+    max-height: 80vh;
+    overflow-y: auto; /* Permite scroll no conteúdo do modal */
+    }
+  

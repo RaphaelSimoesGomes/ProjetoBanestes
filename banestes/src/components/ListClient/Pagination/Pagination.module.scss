@@ -1,0 +1,9 @@
+.paginaton {
+    position: fixed; /* Fixa no rodapé */
+    bottom: 20px; /* Distância do rodapé */
+    left: 50%; /* Centraliza horizontalmente */
+    transform: translateX(-50%); /* Ajusta o centro horizontalmente */
+    display: flex;
+    justify-content: center; /* Centraliza os botões horizontalmente */
+    gap: 10px; /* Espaçamento entre os botões */
+  }

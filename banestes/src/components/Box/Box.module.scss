@@ -1,0 +1,23 @@
+.bodyBox {
+    background: rgba(255, 255, 255, 0.85);
+    color: black;
+    border-radius: 16px;
+    padding: 24px;
+    width: 320px;
+    margin: 40px auto;
+    cursor: pointer;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    transition: all 0.3s;
+    position: relative;
+  }
+  
+  .centered {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+    z-index: 100;
+  }
+  
