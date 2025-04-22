@@ -20,7 +20,7 @@ npm run dev
 ## Autenticação
 
 - **CPF do admin para login:** `00000000000`  
-- **Exemplo de CPF de cliente para login:** `44455566604`
+- **Exemplo de CPF de cliente para login:** `33344455503`
 
 ## Estrutura do projeto
 
