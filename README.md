@@ -22,15 +22,6 @@ npm run dev
 - **CPF do admin para login:** `00000000000`  
 - **Exemplo de CPF de cliente para login:** `33344455503`
 
-## Estrutura do projeto
-
-- `/pages/auth` — Tela de login.
-- `/pages/admin` — Tela administrativa com listagem e detalhes dos clientes.
-- `/pages/client` — Tela do cliente com abas para visualizar dados pessoais, agência e contas.
-- `/components` — Componentes reutilizáveis, incluindo abas, detalhes, listagem e paginação.
-- `/hooks` — Hooks personalizados para busca de dados CSV.
-- `/services` — URLs das planilhas Google Sheets.
-
 ## Observações
 
 - A autenticação é feita no front-end, sem backend, usando dados do Google Sheets.
