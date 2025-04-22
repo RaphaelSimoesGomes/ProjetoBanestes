@@ -5,6 +5,7 @@ import style from "./ListClient.module.scss";
 import {ListClientProps} from "../../types/ListClientProps.type"
 import { useFetchCSV } from "../../hooks/useFetchCSV";
 import { SHEETS_URLS } from "../../services/sheetsUrls";
+import { formatEmployeeValue } from "../../util/employeeFormat";
 const itemsPerPage = 10;
 
 function ListClient({
@@ -47,6 +48,8 @@ function ListClient({
                     <th>{EMPLOYEE_LABELS["id"]}</th>
                     <th>{EMPLOYEE_LABELS["nome"]}</th>
                     <th>{EMPLOYEE_LABELS["email"]}</th>
+                    <th>{EMPLOYEE_LABELS["cpfCnpj"]}</th>
+                    <th>{EMPLOYEE_LABELS["patrimonio"]}</th>
                     <th>Detalhar</th>
                   </tr>
                 </thead>
@@ -56,6 +59,12 @@ function ListClient({
                       <td data-label={EMPLOYEE_LABELS["id"]}>{employee.id}</td>
                       <td data-label={EMPLOYEE_LABELS["nome"]}>{employee.nome}</td>
                       <td data-label={EMPLOYEE_LABELS["email"]}>{employee.email}</td>
+                      <td data-label={EMPLOYEE_LABELS["cpfCnpj"]}>
+                        {formatEmployeeValue("cpfCnpj", employee.cpfCnpj)}
+                      </td>
+                      <td data-label={EMPLOYEE_LABELS["patrimonio"]}>
+                        {formatEmployeeValue("patrimonio", employee.patrimonio)}
+                      </td>
                       <td data-label="Detalhar">
                         <button
                           className={style.detailsButton}
@@ -67,6 +76,7 @@ function ListClient({
                     </tr>
                   ))}
                 </tbody>
+
               </table>
                 <Pagination
                   currentPage={currentPage}

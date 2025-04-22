@@ -1,3 +1,13 @@
+.listClientCenter {
+  background: linear-gradient(120deg, #2563eb 0%, #60a5fa 100%);
+  width: 100vw;
+  min-height: 70vh;
+  display: flex;
+  justify-content: center;
+  padding-top: 32px;
+  box-sizing: border-box;
+}
+
 .employeeTable {
   width: 100%;
   border-collapse: collapse;
@@ -6,7 +16,6 @@
   border-radius: 12px;
   box-shadow: 0 2px 16px rgba(0,0,0,0.05);
 
-  
   th, td {
     padding: 14px 16px;
     text-align: left;
@@ -54,24 +63,44 @@
   }
 }
 
-.itemsCount {
-  font-size: 0.95em;
-  color: #666;
+/* Responsividade para telas pequenas */
+@media (max-width: 700px) {
+  .employeeTable {
+    display: block;
+    width: 100vw;
+    min-width: 400px;
+    overflow-x: auto;
+    border-radius: 0;
+    box-shadow: none;
+    background: transparent;
+    margin: 0;
+    padding-bottom: 12px;
+    /* Estiliza a barra de rolagem */
+    &::-webkit-scrollbar {
+      height: 8px;
+      background: #e0e7ff;
+      border-radius: 8px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: #2563eb;
+      border-radius: 8px;
+    }
+  }
+  .employeeTable table,
+  .employeeTable thead,
+  .employeeTable tbody,
+  .employeeTable th,
+  .employeeTable td,
+  .employeeTable tr {
+    display: revert;
+  }
 }
 
-.loadingState, .errorState, .emptyState {
-  text-align: center;
-  
-  margin: 32px 0;
-  font-size: 1.1em;
-  color: #888;
-}
-.listClientCenter {
-  background: linear-gradient(120deg, #2563eb 0%, #60a5fa 100%);
-  width: 100vw;
-  min-height: 70vh; 
-  display: flex;
-  justify-content: center;
-  padding-top: 32px;
-  box-sizing: border-box;
+@media (max-width: 500px) {
+  .employeeTable {
+    min-width: 340px;
+  }
+  .listClientCenter {
+    padding-top: 12px;
+  }
 }

@@ -12,7 +12,7 @@ export function formatEmployeeValue(key: string, value: string) {
 
     if ((key === "rendaAnual" || key === "patrimonio" ||key === "limiteCredito" || key=== "creditoDisponivel" || key=== "saldo") && !isNaN(Number(value))) {
 
-      return Number(value).toLocaleString("pt-BR", { style: "currency", currency: "BRL", minimumFractionDigits: 0 });
+      return Number(value).toLocaleString("pt-BR", { style: "currency", currency: "BRL", minimumFractionDigits: 2 });
     }
 
     return value;

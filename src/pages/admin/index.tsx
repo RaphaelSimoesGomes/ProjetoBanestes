@@ -2,6 +2,7 @@ import { useState } from "react";
 import ListClient from "../../components/ListClient";
 import Details from "../../components/ListClient/Details/index";
 import SearchBar from "../../components/SearchBar";
+import style from "./Admin.module.scss"
 
 function Admin() {
   const [data, setData] = useState<Record<string, string>[]>([]);
@@ -10,7 +11,7 @@ function Admin() {
   const [detailedEmployee, setDetailedEmployee] = useState<Record<string, string> | null>(null);
 
   return (
-    <div>
+    <div className={style['body-no-scroll']} >
       <SearchBar
         searchTerm={searchTerm}
         setSearchTerm={setSearchTerm}

@@ -1,54 +1,40 @@
-# React + TypeScript + Vite
+<img width=100% src="https://capsule-render.vercel.app/api?type=waving&color=00494c&height=120&section=header"/>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
+# Projeto Banestes
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Este é um sistema bancário simples desenvolvido em React, que permite autenticação de usuários (clientes e admin) e exibe informações detalhadas de clientes, agências e contas.
 
-## Expanding the ESLint configuration
+## Como executar
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+1. Clone o repositório.
+2. Instale as dependências com:
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```bash
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+4. Acesse o sistema via navegador no endereço padrão (geralmente http://localhost:3000).
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Autenticação
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+- **CPF do admin para login:** `00000000000`  
+- **Exemplo de CPF de cliente para login:** `44455566604`
+
+## Estrutura do projeto
+
+- `/pages/auth` — Tela de login.
+- `/pages/admin` — Tela administrativa com listagem e detalhes dos clientes.
+- `/pages/client` — Tela do cliente com abas para visualizar dados pessoais, agência e contas.
+- `/components` — Componentes reutilizáveis, incluindo abas, detalhes, listagem e paginação.
+- `/hooks` — Hooks personalizados para busca de dados CSV.
+- `/services` — URLs das planilhas Google Sheets.
+
+## Observações
+
+- A autenticação é feita no front-end, sem backend, usando dados do Google Sheets.
+- O sistema protege rotas para que apenas usuários autenticados possam acessar as áreas correspondentes.
+
+
+<img width=100% src="https://capsule-render.vercel.app/api?type=waving&color=00494c&height=120&section=footer"/>
