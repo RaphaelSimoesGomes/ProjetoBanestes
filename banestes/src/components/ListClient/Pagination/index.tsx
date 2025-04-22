@@ -1,40 +1,39 @@
-interface PaginationProps {
-    currentPage: number;
-    totalPages: number;
-    setCurrentPage: (page: number) => void;
-  }
-  
-  export default function Pagination({
-    currentPage,
-    totalPages,
-    setCurrentPage
-  }: PaginationProps) {
-    return (
-      <div className="pagination">
+import style from './Pagination.module.scss';
+import { PaginationProps } from '../../../types/PaginationProps.type';
+
+export default function Pagination({
+  currentPage,
+  totalPages,
+  setCurrentPage
+}: PaginationProps) {
+  return (
+    <div className={style.pagination }>
+      <button
+        onClick={() => setCurrentPage(currentPage - 1)}
+        disabled={currentPage === 1}
+        className={style.navButton}
+      >
+        Voltar
+      </button>
+
+      {Array.from({ length: totalPages }, (_, i) => (
         <button
-          onClick={() => setCurrentPage(Math.max(currentPage - 1, 1))}
-          disabled={currentPage === 1}
+          key={i + 1}
+          onClick={() => setCurrentPage(i + 1)}
+          className={`${style.pageButton} ${currentPage === i + 1 ? style.active : ''}`}
+          disabled={false}
         >
-          Previous
+          {i + 1}
         </button>
-  
-        {Array.from({ length: totalPages }, (_, i) => (
-          <button
-            key={i}
-            onClick={() => setCurrentPage(i + 1)}
-            disabled={currentPage === i + 1}
-          >
-            {i + 1}
-          </button>
-        ))}
-  
-        <button
-          onClick={() => setCurrentPage(Math.min(currentPage + 1, totalPages))}
-          disabled={currentPage === totalPages}
-        >
-          Next
-        </button>
-      </div>
-    );
-  }
-  
+      ))}
+
+      <button
+        onClick={() => setCurrentPage(currentPage + 1)}
+        disabled={currentPage === totalPages}
+        className={style.navButton}
+      >
+        Próximo
+      </button>
+    </div>
+  );
+}

@@ -1,10 +1,5 @@
 import style from "./SearchBar.module.scss"
-interface SearchBarProps {
-    searchTerm: string;
-    setSearchTerm: (term: string) => void;
-    setCurrentPage: (page: number) => void;
-  }
-  
+import { SearchBarProps } from "../../types/SearchBarProps.type";
   export default function SearchBar({
     searchTerm,
     setSearchTerm,

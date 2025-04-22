@@ -1,20 +1,77 @@
-.content ul {
-    list-style-type: none;
-    padding: 0;
-  }
+.employeeTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 24px 0;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.05);
+
   
-  .content .collaborator {
-    margin-bottom: 20px;
-    text-align: center; /* Centraliza o texto */
+  th, td {
+    padding: 14px 16px;
+    text-align: left;
   }
-  .modalContainer {
-    background-color: white;
-    color: black;
-    padding: 20px;
-    border-radius: 5px;
-    width: 80%;
-    max-width: 600px;
-    max-height: 80vh;
-    overflow-y: auto; /* Permite scroll no conteúdo do modal */
+
+  th {
+    background: #f5f6fa;
+    color: #222;
+    font-weight: 600;
+    border-bottom: 2px solid #e5e7eb;
+  }
+
+  tr {
+    border-bottom: 1px solid #f0f0f0;
+    transition: background 0.2s;
+  }
+
+  tr:nth-child(even) {
+    background: #fafbfc;
+  }
+
+  tr:hover {
+    background: #f0f4ff;
+  }
+
+  td {
+    color: #333;
+    align-items: center;
+  }
+
+  .detailsButton {
+    background: #2563eb;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 18px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background 0.2s;
+    margin: 0;
+
+    &:hover {
+      background: #1d4ed8;
     }
+  }
+}
+
+.itemsCount {
+  font-size: 0.95em;
+  color: #666;
+}
+
+.loadingState, .errorState, .emptyState {
+  text-align: center;
   
+  margin: 32px 0;
+  font-size: 1.1em;
+  color: #888;
+}
+.listClientCenter {
+  background: linear-gradient(120deg, #2563eb 0%, #60a5fa 100%);
+  width: 100vw;
+  min-height: 70vh; 
+  display: flex;
+  justify-content: center;
+  padding-top: 32px;
+  box-sizing: border-box;
+}

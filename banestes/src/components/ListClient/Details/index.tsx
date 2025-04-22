@@ -1,38 +1,27 @@
-import Box from "../../Box";
+import style from "./Details.module.scss";
+import TabsDetails from "../../Tab/TabDetails";
+import {DetailsProps} from "../../../types/DetailsProps.type";
 
-interface DetailsProps {
-  detailedEmployee: Record<string, string> | null;
-  setDetailedEmployee: (employee: Record<string, string> | null) => void;
-}
-
-export default function Details({
-  detailedEmployee,
-  setDetailedEmployee
-}: DetailsProps) {
-  if (!detailedEmployee) return null; // Don't render if no employee is selected
+export default function Details({ detailedEmployee, setDetailedEmployee }: DetailsProps) {
+  if (!detailedEmployee) return null;
 
   return (
-    <Box>
-      <div className="modal-overlay">
-        <div className="modal-container">
-          <button
-            onClick={() => setDetailedEmployee(null)}
-            className="btn-close"
-          >
-            X
-          </button>
-          <div className="modal-header">
-            <h3>Employee Details</h3>
-          </div>
-          <div className="modal-body">
-            {Object.entries(detailedEmployee).map(([key, value]) => (
-              <p key={key}>
-                <strong>{key}:</strong> {value}
-              </p>
-            ))}
-          </div>
+    <div className={style.modalOverlay}>
+      <div className={style.modalContainer}>
+        <button
+          onClick={() => setDetailedEmployee(null)}
+          className={style.btnClose}
+          aria-label="Fechar"
+        >
+          X
+        </button>
+        <div className={style.modalHeader}>
+          <h3>Detalhes do Colaborador</h3>
+        </div>
+        <div className={style.modalBody}>
+          <TabsDetails client={detailedEmployee} />
         </div>
       </div>
-    </Box>
+    </div>
   );
 }

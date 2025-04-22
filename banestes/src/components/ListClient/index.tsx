@@ -1,76 +1,80 @@
-import { useEffect } from "react";
-import Papa from "papaparse";
 import Box from "../Box";
+import EMPLOYEE_LABELS from "../../util/employeeLabels";
 import Pagination from "./Pagination";
 import style from "./ListClient.module.scss";
-
-interface ListClientProps {
-  data: Record<string, string>[];
-  searchTerm: string;
-  currentPage: number;
-  setCurrentPage: (page: number) => void;
-  setDetailedEmployee: (employee: Record<string, string>) => void;
-  setData: (data: Record<string, string>[]) => void;
-}
-
+import {ListClientProps} from "../../types/ListClientProps.type"
+import { useFetchCSV } from "../../hooks/useFetchCSV";
+import { SHEETS_URLS } from "../../services/sheetsUrls";
 const itemsPerPage = 10;
 
 function ListClient({
-  data,
   searchTerm,
   currentPage,
   setCurrentPage,
   setDetailedEmployee,
-  setData
 }: ListClientProps) {
-  useEffect(() => {
-    Papa.parse<Record<string, string>>(
-      'https://docs.google.com/spreadsheets/d/1PBN_HQOi5ZpKDd63mouxttFvvCwtmY97Tb5if5_cdBA/gviz/tq?tqx=out:csv&sheet=clientes',
-      {
-        download: true,
-        header: true,
-        complete: (results) => {
-          setData(results.data);
-        },
-      }
-    );
-  }, [setData]);
 
-  // Filter data based on search term
+  const { data, isLoading, error } = useFetchCSV(SHEETS_URLS.client);
+
   const filteredData = data.filter((employee) =>
     Object.values(employee).some((value) =>
-      value.toLowerCase().includes(searchTerm.toLowerCase())
+      value?.toLowerCase().includes(searchTerm.toLowerCase())
     )
   );
 
-  // Pagination calculations
   const totalPages = Math.ceil(filteredData.length / itemsPerPage);
+
   const visibleItems = filteredData.slice(
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
   );
 
   return (
-    <div>
-      <Box>
-        <div className={style.listClientContainer}>
-          <ul className={style.collaboratorList}>
-            {visibleItems.map((employee, i) => (
-              <li key={i}>
-                <p><strong>ID:</strong> {employee.id}</p>
-                <p><strong>Name:</strong> {employee.name}</p>
-                <p><strong>Email:</strong> {employee.email}</p>
-                <button onClick={() => setDetailedEmployee(employee)}>
-                  Details
-                </button>
-              </li>
-            ))}
-          </ul>
-          <Pagination
-            currentPage={currentPage}
-            totalPages={totalPages}
-            setCurrentPage={setCurrentPage}
-          />
+    <div className={style.listClientCenter}>
+      <Box >
+        <div>
+          {isLoading ? (
+            <div className={style.loadingState}>Carregando...</div>
+          ) : error ? (
+            <div className={style.errorState}>{error}</div>
+          ) : filteredData.length === 0 ? (
+            <div className={style.emptyState}>Nenhum colaborador entrado.</div>
+          ) : (
+            <>
+              <table className={style.employeeTable}>
+                <thead>
+                  <tr>
+                    <th>{EMPLOYEE_LABELS["id"]}</th>
+                    <th>{EMPLOYEE_LABELS["nome"]}</th>
+                    <th>{EMPLOYEE_LABELS["email"]}</th>
+                    <th>Detalhar</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {visibleItems.map((employee, i) => (
+                    <tr key={i}>
+                      <td data-label={EMPLOYEE_LABELS["id"]}>{employee.id}</td>
+                      <td data-label={EMPLOYEE_LABELS["nome"]}>{employee.nome}</td>
+                      <td data-label={EMPLOYEE_LABELS["email"]}>{employee.email}</td>
+                      <td data-label="Detalhar">
+                        <button
+                          className={style.detailsButton}
+                          onClick={() => setDetailedEmployee(employee)}
+                        >
+                          Exibir
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+                <Pagination
+                  currentPage={currentPage}
+                  totalPages={totalPages}
+                  setCurrentPage={setCurrentPage}
+                />
+            </>
+          )}
         </div>
       </Box>
     </div>

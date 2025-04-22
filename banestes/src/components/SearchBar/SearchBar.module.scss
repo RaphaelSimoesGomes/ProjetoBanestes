@@ -1,15 +1,15 @@
 .SearchBar {
     color: black;
-    position: fixed; /* Fixa no topo */
-    top: 10px; /* Espaço do topo */
-    left: 50%; /* Centraliza horizontalmente */
+    position: fixed;
+    top: 10px; 
+    left: 50%; 
     transform: translateX(-50%);
-    width: 50%; /* Largura da barra */
-    padding: 15px; /* Espaçamento interno */
-    border-radius: 25px; /* Bordas arredondadas */
-    border: none; /* Remove borda padrão */
-    font-size: 18px; /* Tamanho da fonte */
-    box-shadow: 0px 4px 6px rgba(0,0,0,0.2); /* Sombra */
-    background-color: #f9f9f9; /* Fundo claro */
-    z-index: 1000; /* Garante que fique acima de outros elementos */
+    width: 50%; 
+    padding: 15px; 
+    border-radius: 25px; 
+    border: none; 
+    font-size: 18px; 
+    box-shadow: 0px 4px 6px rgba(0,0,0,0.2); 
+    background-color: #f9f9f9; 
+    z-index: 1000; 
   }
