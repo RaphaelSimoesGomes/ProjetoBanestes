@@ -2,7 +2,7 @@
     overflow-x: hidden;
 }
 .body-no-scroll {
-  overflow: hidden !important;
+  overflow-x: hidden !important;
   position: fixed;
   width: 100vw;
   height: 100vh;
